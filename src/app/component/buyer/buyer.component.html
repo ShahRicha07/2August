@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"><a routerLink="" class="btn btn-primary">Home</a></div>
+        <div class="col-auto"><a routerLink="/cart" class="btn btn-primary">Cart</a></div>
+    </div>
+    <form class="form-header" #searchform="ngForm"  (ngSubmit)="getProductByName(pname)">
+        <h6>Search by Product name</h6>
+        <input type="text" name="ename" [(ngModel)]="pname"/>
+        &nbsp;
+        <button class="btn btn-warning" type="submit" >search</button>
+        &nbsp;
+        &nbsp;
+        
+    </form>
+    <div class="row align-items-start" id="product">
+        <div class="col-3" *ngFor="let prod of products">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+
+                    <a><img src="{{prod.imageurl}}" class="card-img-top" alt="..."></a>
+                    <p class="card-text">{{prod.pname}}</p>
+                    <h6>Price</h6>
+
+                    <p style="color: green;">{{prod.unitprice}}</p>
+
+                    <button type="button" id="Buy"class="btn btn-warning" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#modal'+prod.pid">
+                        Buy now
+                    </button>
+                    &nbsp;
+                    <!-- <button id="cart" type="button" class="btn btn-warning" 
+                        >
+                        Add to Cart
+                    </button> -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id=modal{{prod.pid}} data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" *ngIf="prod">
+                        <div class="modal-dialog" >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Description</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <img src="{{prod.imageurl}}" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="row">
+                                        <p>{{prod.description}}</p>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                         (click)="addToCart(prod)">Add to Cart</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>

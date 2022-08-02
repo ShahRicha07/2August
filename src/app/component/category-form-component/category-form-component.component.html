@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-auto"><a routerLink="/category" class="btn btn-primary">Category List</a></div>
+        <div class="col-sm-3"><a routerLink="" class="btn btn-primary">Home</a></div>
+    
+    </div>
+    <br>
+    <div class="row">
+        <h4>Category Form</h4>
+    </div>
+    
+    <form #cf="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-3"><label for="">Category Id</label></div>
+            <div class="col-sm-6"><input type="number" name="categoryId" [(ngModel)]="category.categoryid"></div>
+        </div>
+        &nbsp;
+        <div class="row">
+            <div class="col-sm-3"><label for="">Category name</label></div>
+            <div class="col-sm-6"><input type="text" name="categoryName"[(ngModel)]="category.categoryname"></div>
+        </div>
+        &nbsp;
+       
+
+        <div class="row">
+            <div class="col-sm-3"><button type="submit" class="btn btn-success">submit</button></div>
+            
+        </div>
+    </form>
+</div>
